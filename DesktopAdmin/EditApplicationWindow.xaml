@@ -1,0 +1,45 @@
+﻿<Window x:Class="DesktopAdmin.EditApplicationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DesktopAdmin"
+        mc:Ignorable="d"
+        Title="EditApplicationWindow" Height="200" Width="280">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Pridat form-->
+        <Label Grid.Row="0" Content="Student:"/>
+        <TextBox Grid.Row="0" Name="ApplicationStudentInput" Grid.Column="1" Text="{Binding ApplicationsCpy.Student}"/>
+
+        <Label Grid.Row="1" Content="Datum:"/>
+        <TextBox Grid.Row="1" Name="ApplicationDatumInput" Grid.Column="1" Text="{Binding ApplicationsCpy.Date}"/>
+
+        <Label Grid.Row="2" Content="Program 1:"/>
+        <TextBox Grid.Row="2" Name="ApplicationProgram1Input" Grid.Column="1" Text="{Binding ApplicationsCpy.Program1}"/>
+
+        <Label Grid.Row="3" Content="Program 2:"/>
+        <TextBox Grid.Row="3" Name="ApplicationProgram2Input" Grid.Column="1" Text="{Binding ApplicationsCpy.Program2}"/>
+
+        <Label Grid.Row="4" Content="Program 3:"/>
+        <TextBox Grid.Row="4" Name="ApplicationProgram3Input" Grid.Column="1" Text="{Binding ApplicationsCpy.Program3}"/>
+
+        <Button Grid.Row="5" Grid.ColumnSpan="2" Content="Upravit" Click="UpravitBtn"/>
+        <!--Pridat form-->
+
+    </Grid>
+</Window>

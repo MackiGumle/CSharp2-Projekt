@@ -1,0 +1,184 @@
+﻿<Window x:Class="DesktopAdmin.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DesktopAdmin"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="WindowLoaded">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Přihlášky">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <DataGrid Grid.Row="0" Grid.ColumnSpan="1" Name="ApplicationsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Applications}" CanUserAddRows="False" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="ID Studenta" Binding="{Binding Student}" Width="*"/>
+                            <DataGridTextColumn Header="Datum" Binding="{Binding Date}" Width="*"/>
+                            <DataGridTextColumn Header="Program1" Binding="{Binding Program1}" Width="*"/>
+                            <DataGridTextColumn Header="Program2" Binding="{Binding Program2}" Width="*"/>
+                            <DataGridTextColumn Header="Program3" Binding="{Binding Program3}" Width="*"/>
+                            <DataGridTemplateColumn Width="Auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Smazat" Click="ApplicationSmazatBtn"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="Auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Upravit" Click="ApplicationUpravitBtn"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            
+            <TabItem Header="SŠ">
+                <StackPanel >
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--Pridat form-->
+                        <Label Grid.Row="1" Content="Název:"/>
+                        <TextBox Grid.Row="1" Name="SchoolNameInput" Grid.Column="1" Text="{Binding School.Name}"/>
+
+                        <Label Grid.Row="2" Content="Stát:"/>
+                        <TextBox Grid.Row="2" Name="SchoolCountryInput" Grid.Column="1" Text="{Binding School.Country}"/>
+
+                        <Label Grid.Row="3" Content="Město:"/>
+                        <TextBox Grid.Row="3" Name="SchoolCityInput" Grid.Column="1" Text="{Binding School.City}"/>
+
+                        <Label Grid.Row="4" Content="Ulice:"/>
+                        <TextBox Grid.Row="4" Name="SchoolStreetInput" Grid.Column="1" Text="{Binding School.Street}"/>
+
+                        <Button Grid.Row="5" Grid.ColumnSpan="2" Content="Přidat" Click="SchoolPridatBtn"/>
+                        <!--Pridat form-->
+
+                    </Grid>
+
+                    <DataGrid Name="SchoolsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Schools}" CanUserAddRows="False" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Název" Binding="{Binding Name}" Width="*"/>
+                            <DataGridTextColumn Header="Stát" Binding="{Binding Country}" Width="*"/>
+                            <DataGridTextColumn Header="Město" Binding="{Binding City}" Width="*"/>
+                            <DataGridTextColumn Header="Ulice" Binding="{Binding Street}" Width="*"/>
+                            <DataGridTemplateColumn Width="Auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Smazat" Click="SchoolSmazatBtn"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="Auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Upravit" Click="SchoolUpravitBtn"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </StackPanel>
+            </TabItem>
+
+
+            <TabItem Header="Programy">
+                <StackPanel >
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--Pridat form-->
+                        <Label Grid.Row="1" Content="ID Školy:"/>
+                        <!--<TextBox Grid.Row="1" Name="ProgramSchoolInput" Grid.Column="1" Text="{Binding Program.School}"/>-->
+
+                        <ComboBox Grid.Row="1" Name="ProgramSchoolInput" Grid.Column="1" ItemsSource="{Binding Schools}" DisplayMemberPath="Name" SelectedValuePath="Id"/>
+
+                        <Label Grid.Row="2" Content="Název:"/>
+                        <TextBox Grid.Row="2" Name="ProgramNameInput" Grid.Column="1" Text="{Binding Program.Name}"/>
+
+                        <Label Grid.Row="3" Content="Popis:"/>
+                        <TextBox Grid.Row="3" Name="ProgramDescriptionInput" Grid.Column="1" Text="{Binding Program.Description}"/>
+
+                        <Label Grid.Row="4" Content="Kapacita:"/>
+                        <TextBox Grid.Row="4" Name="ProgramCapacityInput" Grid.Column="1" Text="{Binding Program.Capacity}"/>
+
+                        <Button Grid.Row="5" Grid.ColumnSpan="2" Content="Přidat" Click="ProgramPridatBtn"/>
+                        <!--Pridat form-->
+
+                    </Grid>
+
+                    <DataGrid Name="ProgramsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Programs}" CanUserAddRows="False" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="ID Školy" Binding="{Binding School}" Width="*"/>
+                            <DataGridTextColumn Header="Název" Binding="{Binding Name}" Width="*"/>
+                            <DataGridTextColumn Header="Popis" Binding="{Binding Description}" Width="*"/>
+                            <DataGridTextColumn Header="Kapacita" Binding="{Binding Capacity}" Width="*"/>
+                            <DataGridTemplateColumn Width="Auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Smazat" Click="ProgramSmazatBtn"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="Auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Upravit" Click="ProgramUpravitBtn"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </StackPanel>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+</Window>

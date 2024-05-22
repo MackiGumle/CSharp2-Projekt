@@ -1,0 +1,42 @@
+﻿<Window x:Class="DesktopAdmin.EditProgramWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DesktopAdmin"
+        mc:Ignorable="d"
+        Title="EditProgramWindow" Height="180" Width="250">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Pridat form-->
+        <Label Grid.Row="1" Content="ID Školy:"/>
+        <TextBox Grid.Row="1" Name="ProgramSchoolInput" Grid.Column="1" Text="{Binding ProgramCpy.School}"/>
+
+        <Label Grid.Row="2" Content="Název:"/>
+        <TextBox Grid.Row="2" Name="ProgramNameInput" Grid.Column="1" Text="{Binding ProgramCpy.Name}"/>
+
+        <Label Grid.Row="3" Content="Popis:"/>
+        <TextBox Grid.Row="3" Name="ProgramDescriptionInput" Grid.Column="1" Text="{Binding ProgramCpy.Description}"/>
+
+        <Label Grid.Row="4" Content="Kapacita:"/>
+        <TextBox Grid.Row="4" Name="ProgramCapacityInput" Grid.Column="1" Text="{Binding ProgramCpy.Capacity}"/>
+
+        <Button Grid.Row="5" Grid.ColumnSpan="2" Content="Upravit" Click="UpravitBtn"/>
+        <!--Pridat form-->
+
+    </Grid>
+</Window>
